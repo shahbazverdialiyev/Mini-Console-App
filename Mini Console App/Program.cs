@@ -1,4 +1,4 @@
-﻿using Mini_Console_App;
+using Mini_Console_App;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 
@@ -33,7 +33,7 @@ internal class Program
                 bool result = false;
                 foreach (var user in users)
                 {
-                    Console.WriteLine(user.Username+" "+user.Password);
+                    Console.WriteLine(user.Username + " " + user.Password);
                     if (user.Username == username && user.Password == password)
                     {
                         result = true;
@@ -124,6 +124,8 @@ internal class Program
             }
             else if (command == "2")
             {
+                Console.WriteLine("Register");
+                Console.WriteLine();
                 string name;
                 string surname;
                 string password;
@@ -131,6 +133,19 @@ internal class Program
                 name = Console.ReadLine();
                 Console.Write("surname: ");
                 surname = Console.ReadLine();
+                int userNumber = 0;
+                foreach (var user in users)
+                {
+                    if (user.Name == name && user.Surname == surname)
+                    {
+                        userNumber++;
+                    }
+                }
+                if (userNumber>0)
+                {
+                    surname += userNumber;
+                }
+
                 while (true)
                 {
                     Console.Write("password: ");
@@ -160,6 +175,7 @@ internal class Program
                         users[users.Length - 1] = user;
                         break;
                     }
+                    Console.WriteLine("kecherli password yazin");
                 }
                 Console.WriteLine();
                 Console.WriteLine("1. Post create");
